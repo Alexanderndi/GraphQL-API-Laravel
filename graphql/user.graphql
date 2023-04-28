@@ -1,3 +1,6 @@
+scalar Upload
+  @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
 extend type Query{
 
     # Users
@@ -33,6 +36,10 @@ type Mutation{
         password: String! @rules(apply: ["min:8"])
     ): User! @upsert
 
+    # Upload avatar
+    updateUserAvatar(
+        image: Upload!
+    ): Stringgit 
 }
 
 # Type
@@ -42,4 +49,5 @@ type User{
     email: String
     email_verified_at: String
     posts: [Post]! @hasMany
+    avatar: String
 }
